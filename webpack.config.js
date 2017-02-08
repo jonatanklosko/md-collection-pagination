@@ -9,7 +9,8 @@ module.exports = {
     libraryTarget: 'umd'
   },
   externals: {
-    angular: 'angular'
+    'angular': 'angular',
+    'angular-material': 'angular-material'
   },
   module: {
     rules: [{

@@ -1,4 +1,5 @@
 import angular from 'angular';
+import 'angular-material';
 import component from './component';
 
 export default angular
