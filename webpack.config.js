@@ -1,10 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'md-collection-pagination': './src/index.js',
+    'md-collection-pagination.min': './src/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'md-collection-pagination.js',
+    filename: '[name].js',
     library: 'mdCollectionPagination',
     libraryTarget: 'umd'
   },
@@ -21,5 +25,8 @@ module.exports = {
       test: /\.html$/,
       use: 'html-loader'
     }]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({ include: /\.min\.js$/, minimize: true })
+  ]
 };
