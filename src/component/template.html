@@ -1,0 +1,19 @@
+<section layout="row" layout-align="center center" layout-wrap ng-show="vm.allIndexes.length > 1">
+  <md-button class="md-icon-button md-raised md-primary" ng-click="vm.beginning()">
+    <<
+  </md-button>
+  <md-button class="md-icon-button md-raised" ng-click="vm.previousIndexes()" ng-hide="vm.indexesOffset === 0">
+    ...
+  </md-button>
+  <md-button class="md-icon-button md-raised" ng-class="{ 'md-accent': index === vm.selectedIndex }"
+             ng-click="vm.select(index)" ng-repeat="index in vm.allIndexes | limitTo : vm.shownIndexesCount : vm.indexesOffset">
+    {{ index + 1 }}
+  </md-button>
+  <md-button class="md-icon-button md-raised" ng-click="vm.nextIndexes()"
+             ng-show="vm.indexesOffset + vm.shownIndexesCount <= vm.lastIndex">
+    ...
+  </md-button>
+  <md-button class="md-icon-button md-raised md-primary" ng-click="vm.end()">
+    >>
+  </md-button>
+</section>
