@@ -1,10 +1,20 @@
 {
   "name": "md-collection-pagination",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Angular Material Design component for paginating a collection.",
   "main": "dist/md-collection-pagination.js",
-  "module": "src/index.js",
+  "keywords": [
+    "angular",
+    "angular-material",
+    "pagination"
+  ],
   "author": "Jonatan Kłosko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonatanklosko/md-collection-pagination.git"
+  },
+  "bugs": "https://github.com/jonatanklosko/md-collection-pagination/issues",
   "scripts": {
     "build": "webpack --progress",
     "test": "karma start spec/karma.conf.js --single-run",
