@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,15 +65,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _template = __webpack_require__(4);
+var _template = __webpack_require__(5);
 
 var _template2 = _interopRequireDefault(_template);
 
@@ -144,8 +144,8 @@ var CollectionPaginationController = function () {
   _createClass(CollectionPaginationController, [{
     key: "$onChanges",
     value: function $onChanges() {
-      this.perPage = this.perPage || 5;
-      this.shownIndexesCount = this.navigationLength || 5;
+      this.perPage = parseInt(this.perPage) || 5;
+      this.shownIndexesCount = parseInt(this.navigationLength) || 5;
       this.lastIndex = Math.ceil(this.collection.length / this.perPage) - 1;
       this.allIndexes = [];
       for (var i = 0; i <= this.lastIndex; this.allIndexes.push(i++)) {}
@@ -201,12 +201,6 @@ exports.default = CollectionPaginationController;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-module.exports = "<section layout=\"row\" layout-align=\"center center\" layout-wrap ng-show=\"vm.allIndexes.length > 1\">\n  <md-button class=\"md-icon-button md-raised md-primary\" ng-click=\"vm.beginning()\">\n    <<\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-click=\"vm.previousIndexes()\" ng-hide=\"vm.indexesOffset === 0\">\n    ...\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-class=\"{ 'md-accent': index === vm.selectedIndex }\"\n             ng-click=\"vm.select(index)\" ng-repeat=\"index in vm.allIndexes | limitTo : vm.shownIndexesCount : vm.indexesOffset\">\n    {{ index + 1 }}\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-click=\"vm.nextIndexes()\"\n             ng-show=\"vm.indexesOffset + vm.shownIndexesCount <= vm.lastIndex\">\n    ...\n  </md-button>\n  <md-button class=\"md-icon-button md-raised md-primary\" ng-click=\"vm.end()\">\n    >>\n  </md-button>\n</section>\n";
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,6 +223,12 @@ var _component2 = _interopRequireDefault(_component);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _angular2.default.module('mdCollectionPagination', ['ng', 'ngMaterial']).component('mdCollectionPagination', _component2.default).name;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = "<section layout=\"row\" layout-align=\"center center\" layout-wrap ng-show=\"vm.allIndexes.length > 1\">\n  <md-button class=\"md-icon-button md-raised md-primary\" ng-click=\"vm.beginning()\">\n    <<\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-click=\"vm.previousIndexes()\" ng-hide=\"vm.indexesOffset === 0\">\n    ...\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-class=\"{ 'md-accent': index === vm.selectedIndex }\"\n             ng-click=\"vm.select(index)\" ng-repeat=\"index in vm.allIndexes | limitTo : vm.shownIndexesCount : vm.indexesOffset\">\n    {{ index + 1 }}\n  </md-button>\n  <md-button class=\"md-icon-button md-raised\" ng-click=\"vm.nextIndexes()\"\n             ng-show=\"vm.indexesOffset + vm.shownIndexesCount <= vm.lastIndex\">\n    ...\n  </md-button>\n  <md-button class=\"md-icon-button md-raised md-primary\" ng-click=\"vm.end()\">\n    >>\n  </md-button>\n</section>\n";
 
 /***/ })
 /******/ ]);
