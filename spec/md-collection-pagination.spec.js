@@ -16,10 +16,10 @@ describe('mdCollectionPagination component', () => {
 
   beforeEach(() => {
     $rootScope.collection = Array.from({ length: 100 }, (_, index) => index + 1);
-    mdCollectionPagination = $($compile(`
+    mdCollectionPagination = $compile(`
       <md-collection-pagination collection="collection" paginated-collection="paginatedCollection">
       </md-collection-pagination>
-    `)($rootScope));
+    `)($rootScope);
     $rootScope.$digest();
   });
 
@@ -116,6 +116,44 @@ describe('mdCollectionPagination component', () => {
 
       it('hides the navigation', () => {
         expect(mdCollectionPagination.find('section').hasClass('ng-hide')).toBeTruthy();
+      });
+    });
+  });
+
+  describe('custom options', () => {
+    let directiveModel;
+    beforeEach(() => {
+      directiveModel = mdCollectionPagination.isolateScope().vm;
+      $rootScope.collection = [1, 2, 3, 4, 5, 6];
+    });
+
+    describe('perPage', () => {
+      it('defines the count of items to be displayed at once', () => {
+        directiveModel.perPage = 2;
+        $rootScope.$digest();
+        expect($rootScope.paginatedCollection.length).toEqual(2);
+        expectNavigationToEqual('<<', '1', '2', '3', '>>');
+      });
+
+      it('accepts a string', () => {
+        directiveModel.perPage = '2';
+        $rootScope.$digest();
+        expect($rootScope.paginatedCollection.length).toEqual(2);
+        expectNavigationToEqual('<<', '1', '2', '3', '>>');
+      });
+    });
+
+    describe('navigationLength', () => {
+      it('defines the count of navigation buttons with page numbers', () => {
+        directiveModel.navigationLength = 2;
+        $rootScope.$digest();
+        expectNavigationToEqual('<<', '1', '2', '>>');
+      });
+
+      it('accepts a string', () => {
+        directiveModel.navigationLength = '2';
+        $rootScope.$digest();
+        expectNavigationToEqual('<<', '1', '2', '>>');
       });
     });
   });

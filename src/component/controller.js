@@ -1,7 +1,7 @@
 export default class CollectionPaginationController {
   $onChanges() {
-    this.perPage = this.perPage || 5;
-    this.shownIndexesCount = this.navigationLength || 5;
+    this.perPage = parseInt(this.perPage) || 5;
+    this.shownIndexesCount = parseInt(this.navigationLength) || 5;
     this.lastIndex = Math.ceil(this.collection.length / this.perPage) - 1;
     this.allIndexes = [];
     for(let i = 0; i <= this.lastIndex; this.allIndexes.push(i++)) {}

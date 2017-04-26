@@ -58,5 +58,5 @@ and the user can easily go through it using the navigation.
 | --------- | ---- | ----------- |
 | `collection` | `Array` | The base collection containing all the items. |
 | `paginated-collection` | `Array` | The variable to be updated with a subset of the `collection`. |
-| `per-page` | `Number` | The maximum amount of items to be displayed at once, present in the `paginated-collection`. Default: `5`. |
-| `navigation-length` | `Number` | The maximum amount of numbers to be displayed within the navigation. Default: `5`. |
+| `per-page` | `Number | String` | The maximum amount of items to be displayed at once, present in the `paginated-collection`. Default: `5`. |
+| `navigation-length` | `Number | String` | The maximum amount of numbers to be displayed within the navigation. Default: `5`. |
