@@ -18,7 +18,10 @@
   "scripts": {
     "build": "webpack --progress",
     "test": "karma start spec/karma.conf.js --single-run",
-    "test:watch": "karma start spec/karma.conf.js --auto-watch"
+    "test:watch": "karma start spec/karma.conf.js --auto-watch",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "angular": "^1.6.2",
