@@ -60,3 +60,8 @@ and the user can easily go through it using the navigation.
 | `paginated-collection` | `Array` | The variable to be updated with a subset of the `collection`. |
 | `per-page` | `Number` &#124; `String` | The maximum amount of items to be displayed at once, present in the `paginated-collection`. Default: `5`. |
 | `navigation-length` | `Number` &#124; `String` | The maximum amount of numbers to be displayed within the navigation. Default: `5`. |
+
+## License
+
+This project is licensed under the terms of the
+[MIT license](/LICENSE).
